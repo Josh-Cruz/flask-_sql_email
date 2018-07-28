@@ -31,7 +31,11 @@ def results():
                 "email": request.form['email']
             }
             mysql.query_db(query,data)
-    return render_template('success.html')
+
+            select_query = 'SELECT * FROM users'
+            allusers = mysql.query_db(select_query)
+            print allusers
+    return render_template('success.html', users = allusers)
 
         
         
